@@ -165,21 +165,16 @@ void Heap::HeapSort()
     }
 }
 
+// O(lg N)
 void Heap::Insert(int key)
 {
     arr.push_back(key);
     length = arr.size();
     heapSize = length;
-    size_t cur = heapSize - 1;
-    size_t par = parent(cur);
-    arr[cur] = key;
-    while (cur != 0 && arr[par] < arr[cur])
-    {
-        swap(arr[cur], arr[par]);
-        cur = par;
-    }
+    IncreaseKey(heapSize, key);
 }
 
+// O(lg N)
 int Heap::ExtractMax()
 {
     if (heapSize < 0)
@@ -204,6 +199,7 @@ int Heap::GetMax()
     return arr[0];
 }
 
+//O(lg N)
 void Heap::IncreaseKey(size_t pos, int key)
 {
     if(pos >= heapSize)
