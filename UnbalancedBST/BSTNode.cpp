@@ -63,7 +63,6 @@ BSTNode *BSTNode::Next_larger()
     // This node has a parent and this node is at the right of that node
     while (cur->parent != nullptr && cur == cur->parent->right)
     {
-        cout << cur->key << endl;
         cur = cur->parent;
     }
     return cur;
