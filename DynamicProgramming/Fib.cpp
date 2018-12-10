@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstring>
 using namespace std;
 
 int memo[100];
@@ -25,7 +26,8 @@ int BottomUpFib(int n)
 
 int main()
 {
-    memset(memo, -1, sizeof memo);
+    // ! Uncomment this to run.
+    //memset(memo, -1, sizeof memo);
     //cout << dp(6) << endl;
     BottomUpFib(6);
     return 0;

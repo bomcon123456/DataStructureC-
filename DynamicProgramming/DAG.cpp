@@ -14,7 +14,8 @@ void Init()
 {
     n = 7;
     AdjWeightedList.resize(n);
-    memset(memo, -1, sizeof memo);
+    // ! Uncomment this to run.
+    //memset(memo, -1, sizeof memo);
 }
 
 void AddEdge(int u, int v, int w)

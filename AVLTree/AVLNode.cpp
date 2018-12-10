@@ -1,12 +1,27 @@
 #include "AVLNode.h"
 
-AVLNode *AVLNode::Find(AVLNode *input)
+void AVLNode::Set_left(AVLNode *input)
 {
-    if (input->key == this->key)
+    this->left = input;
+}
+
+void AVLNode::Set_parent(AVLNode *input)
+{
+    this->parent = input;
+}
+
+void AVLNode::Set_right(AVLNode *input)
+{
+    this->right = input;
+}
+
+AVLNode *AVLNode::Find(int k)
+{
+    if (k == this->key)
     {
         return this;
     }
-    else if (input->key > this->key)
+    else if (k > this->key)
     {
         if (!this->right)
         {
@@ -15,7 +30,7 @@ AVLNode *AVLNode::Find(AVLNode *input)
         }
         else
         {
-            return this->right->Find(input);
+            return this->right->Find(k);
         }
     }
     else
@@ -27,7 +42,7 @@ AVLNode *AVLNode::Find(AVLNode *input)
         }
         else
         {
-            return this->left->Find(input);
+            return this->left->Find(k);
         }
     }
 }
@@ -93,7 +108,7 @@ void AVLNode::Insert(AVLNode *input)
         cout << "Input is not valid." << endl;
         return;
     }
-    else if (input->key == this->key)
+    if (input->key == this->key)
     {
         cout << "Input has already been in." << endl;
         return;
@@ -129,26 +144,26 @@ void AVLNode::Insert(AVLNode *input)
 
 AVLNode *AVLNode::Delete()
 {
-    if(this->left == nullptr || this->right == nullptr)
+    if (this->left == nullptr || this->right == nullptr)
     {
-        AVLNode* child = (this->left!=nullptr) ? this->left : this->right;
-        if(this == this->parent->left)
+        AVLNode *child = (this->left != nullptr) ? this->left : this->right;
+        if (this == this->parent->left)
         {
             this->parent->left = child;
-            if(this->parent->left)
+            if (this->parent->left)
                 this->parent->left->parent = this->parent;
         }
         else if (this == this->parent->right)
         {
             this->parent->right = child;
-            if(this->parent->right)
+            if (this->parent->right)
                 this->parent->right->parent = this->parent;
         }
         return this;
     }
     else
     {
-        AVLNode* mid = this->Next_larger();
+        AVLNode *mid = this->Next_larger();
         this->key = mid->key;
         return mid->Delete();
     }

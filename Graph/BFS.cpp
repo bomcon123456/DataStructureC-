@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int size;
+int Size;
 
 vector<vector<int>> AdjList;
 map<int, int> level;
@@ -50,7 +50,7 @@ void BFS(int s)
 
 void BFSQueue(int s)
 {
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < Size; i++)
     {
         levelQ[i] = -2;
         parentQ[i] = -2;
@@ -76,8 +76,8 @@ void BFSQueue(int s)
 
 int main()
 {
-    size = 8;
-    AdjList.resize(size);
+    Size = 8;
+    AdjList.resize(Size);
     AddEdge(0, 1);
     AddEdge(0, 3);
     AddEdge(1, 2);
@@ -89,14 +89,14 @@ int main()
     AddEdge(5, 7);
     AddEdge(6, 7);
     BFS(0);
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < Size; i++)
     {
         cout << "Vertex: " << i << " has level: " << level[i] << endl;
         cout << "Parent of " << i << " is: " << parent[i] << endl;
     }
     cout <<endl <<endl;
     BFSQueue(0);
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < Size; i++)
     {
         cout << "Vertex: " << i << " has level: " << levelQ[i] << endl;
         cout << "Parent of " << i << " is: " << parentQ[i] << endl;
